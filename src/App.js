@@ -3,9 +3,6 @@ import CircleButton from './CircleButton';
 import Webcam from "react-webcam"
 
 export default class App extends Component {
-  setRef = webcam => {
-    this.webcam = webcam
-  }
 
   constructor(props){
     super(props)
@@ -13,10 +10,16 @@ export default class App extends Component {
       dataUri: '',
       isShowVideo: true,
     }
+
+    this.capture = this.capture.bind(this)
   }
 
-  capture = () => {
+
+
+  capture() {
     const dataUri = this.webcam.getScreenshot()
+
+    
     this.setState({
       dataUri,
       isShowVideo: false
@@ -29,9 +32,6 @@ export default class App extends Component {
         isShowVideo: true
       });
     }, 900);
-    
-    
-    
   }
 
   render() {
@@ -51,14 +51,15 @@ export default class App extends Component {
           alt="camera" />
         <Webcam 
           audio={false}
-          ref={this.setRef}
+          ref={node => this.webcam = node}
           width={720}
           height={960}
           style={videoStyles}
           screenshotFormat='image/jpeg' 
           videoConstraints={videoConstraints}
          />
-        <CircleButton onClick={() => this.capture.bind(this)} />
+
+        <CircleButton onClick={ this.capture()} />
       </div>
     )
   }

@@ -14,7 +14,6 @@ const CircleButton = ({ onClick, isClicked }) => {
     )
 }
 
-
 CircleButton.propTypes = {
     onClick: PropTypes.func.isRequired,
     isClicked: PropTypes.bool.isRequired
