@@ -46,7 +46,7 @@ export default class App extends Component {
     let showHideImgStyle = !this.state.isShowVideo ? {display: 'inline-block'} : {display: 'none'};
 
     return (
-      <div style={{position: 'relative', maxWidht:'480px'}}>
+      <div style={{position: 'relative', maxWidth:'480px'}}>
         <img src={this.state.imgUrl} style={showHideImgStyle}
           alt="camera" />
         <Webcam 
@@ -58,7 +58,7 @@ export default class App extends Component {
           screenshotFormat='image/jpeg' 
           videoConstraints={videoConstraints}
          />
-        <CircleButton />
+        <CircleButton onClick={() => this.capture.bind(this)} />
       </div>
     )
   }
