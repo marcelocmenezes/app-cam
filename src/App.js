@@ -21,14 +21,21 @@ export default class App extends Component {
   }
 
   render() {
+    const videoConstraints = {
+      width: 720,
+      height: 960,
+      facingMode: "user"
+    }
+
     return (
       <div>
-        <image src={this.state.imgUrl} />
+        <img src={this.state.imgUrl} />
         <Webcam 
           audio={false}
           ref={this.setRef}
-          screenshotFormat="image/jpeg"
-          onUserMediaError={err => console.log(err)}
+          style={{height: '100%', width:'100%', transform: 'rotateY(180deg)'}}
+          screenshotFormat='image/jpeg' 
+          videoConstraints={videoConstraints}
          />
         <CircleButton />
       </div>
