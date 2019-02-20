@@ -1,0 +1,32 @@
+
+#webcam-photo-container-circles {
+    position: absolute;
+    left: 50%;
+    bottom: 70px;
+}
+
+.webcam-photo-outter-circle {
+    background-color: rgba(200, 200, 200, 0.4);
+    border-radius: 50%;
+    height: 50px;
+    left: -25px;
+    position: absolute;
+    width: 50px;
+    z-index: 1;
+ }
+
+.webcam-photo-inner-circle { 
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    height: 30px;
+    left: 50%;
+    top: 50%;
+    margin-top: -15px;
+    margin-left: -15px;
+    position: absolute;
+    width: 30px;
+    z-index: 2;
+}
+
+.webcam-photo-outter-circle:hover > .webcam-photo-inner-circle { background-color: rgba(255, 20, 20, .3)}
+.webcam-photo-inner-circle .isClicked {}
