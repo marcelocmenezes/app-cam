@@ -33,6 +33,8 @@ export default class App extends Component {
         <Webcam 
           audio={false}
           ref={this.setRef}
+          width={720}
+          height={ 960}
           style={{height: '100%', width:'100%', transform: 'rotateY(180deg)'}}
           screenshotFormat='image/jpeg' 
           videoConstraints={videoConstraints}
