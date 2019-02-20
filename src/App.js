@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CircleButton from './CircleButton';
 import Webcam from "react-webcam"
 
-export default class App extends Component {
+class App extends Component {
 
   constructor(props){
     super(props)
@@ -11,56 +11,55 @@ export default class App extends Component {
       isShowVideo: true,
     }
 
-    this.capture = this.capture.bind(this)
+    this.setRef = this.setRef.bind(this)
+    this.getScreenshot = this.getScreenshot.bind(this)
+  }
+
+  setRef (webcam) {
+    this.webcam = webcam
   }
 
 
+  getScreenshot()  {
+    if(this.state.isShowVideo){
+    let dataUri = this.webcam.getScreenshot()
+    this.setState({dataUri, isShowVideo: false})
+    } else {
+      this.setState({dataUri: '', isShowVideo: true})
+    }
 
-  capture() {
-    const dataUri = this.webcam.getScreenshot()
 
-    
-    this.setState({
-      dataUri,
-      isShowVideo: false
-    });
-    
-    console.log(dataUri)
-
-    this.showVideoTimeoutId = setTimeout(() => {
-      this.setState({
-        isShowVideo: true
-      });
-    }, 900);
   }
-
+  
   render() {
     const videoConstraints = {
-      width: 720,
-      height: 960,
+      aspectRatio: 0.75,
+      frameRate: { max: 60 },
       facingMode: "user"
     }
 
-    let videoStyles = this.state.isShowVideo ? {display: 'inline-block', height: '100%', width:'100%', transform: 'rotateY(180deg)'} : {display: 'none'};
+    const videoStyle = this.state.isShowVideo ? { display: 'inline-block', height: '100%', width:'100%', transform: 'rotateY(180deg)' } : { display: 'none' }
+    const circleButtonStyle = this.state.isShowVideo ? { } : { display: 'none' }
 
-    let showHideImgStyle = !this.state.isShowVideo ? {display: 'inline-block'} : {display: 'none'};
+    const imgStyle = !this.state.isShowVideo ? {display: 'inline-block', height: '100%', width:'100%', transform: 'rotateY(180deg)'} : {display: 'none'};
 
     return (
-      <div style={{position: 'relative', maxWidth:'480px'}}>
-        <img src={this.state.imgUrl} style={showHideImgStyle}
-          alt="camera" />
+      <div style={{position: 'relative', maxWidth:'320px'}}>
         <Webcam 
           audio={false}
-          ref={node => this.webcam = node}
-          width={720}
-          height={960}
-          style={videoStyles}
+          ref={cam => this.setRef(cam)}
+          style={videoStyle}
           screenshotFormat='image/jpeg' 
           videoConstraints={videoConstraints}
          />
 
-        <CircleButton onClick={ this.capture()} />
+         <img src={this.state.dataUri} rel='' style={imgStyle} />
+
+        <CircleButton onClick={ this.getScreenshot } style={circleButtonStyle} isClicked={!this.state.isShowVideo}/>
       </div>
     )
   }
 }
+
+
+export default App

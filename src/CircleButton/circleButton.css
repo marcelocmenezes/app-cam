@@ -6,7 +6,8 @@
 }
 
 .webcam-photo-outter-circle {
-    background-color: rgba(200, 200, 200, 0.4);
+    background-color: rgba(200, 200, 200, 0);
+    color: rgba(145, 167, 255, 0.2);
     border-radius: 50%;
     height: 50px;
     left: -25px;
@@ -16,8 +17,9 @@
  }
 
 .webcam-photo-inner-circle { 
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0);
     border-radius: 50%;
+ 
     height: 30px;
     left: 50%;
     top: 50%;
@@ -28,5 +30,6 @@
     z-index: 2;
 }
 
-.webcam-photo-outter-circle:hover > .webcam-photo-inner-circle { background-color: rgba(255, 20, 20, .3)}
+
+.webcam-photo-outter-circle:hover { color: rgba(145, 167, 255, 0.5); }
 .webcam-photo-inner-circle .isClicked {}
