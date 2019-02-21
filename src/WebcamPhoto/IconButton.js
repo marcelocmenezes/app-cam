@@ -1,12 +1,10 @@
+
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './circleButton.css'
+// import './circleButton.css'
 
-
-class CircleButton extends Component {
-    
+class IconButton extends Component {    
     render(){
-
         return(
             <div id='webcam-photo-container-circles'>
                 <div className='webcam-photo-outter-circle' onClick={this.props.onClick}  >
@@ -19,14 +17,9 @@ class CircleButton extends Component {
     }
 }
 
-CircleButton.propTypes = {
+IconButton.propTypes = {
     onClick: PropTypes.func.isRequired,
-    style: PropTypes.object,
-    isClicked: PropTypes.bool
+    isClicked: PropTypes.bool.isRequired
 }
 
-CircleButton.defaultProps = {
-    style: {}
-}
-
-export default CircleButton
+export default IconButton

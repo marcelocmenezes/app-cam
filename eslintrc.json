@@ -1,0 +1,11 @@
+{
+    "extends":  ["standard", "standard-jsx"],
+    "overrides": [
+        {
+            "files": ["*"],
+            "rules": {
+                "camelcase": "off"
+            }
+        }
+    ]
+}
