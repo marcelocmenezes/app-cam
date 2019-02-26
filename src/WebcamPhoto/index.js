@@ -49,7 +49,7 @@ class WebcamPhoto extends Component {
             style={videoStyle}
             screenshotFormat='image/jpeg' 
             videoConstraints={videoConstraints}
-            onUserMediaError={ e => console.log(e.name) }
+            onUserMediaError={ e => console.log(e) }
             />
 
             <img src={this.props.dataUri} rel='' style={imgStyle} />
