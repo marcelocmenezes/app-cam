@@ -5,7 +5,7 @@ import Webcam from "react-webcam"
 
 import './WebcamPhoto.css'
 
-const videoConstraints = { aspectRatio: 0.75, frameRate: { max: 60 }, facingMode: 'selfie'  }
+const videoConstraints = { aspectRatio: 0.75, frameRate: { max: 60 }, facingMode: { exact: 'user' }  }
 
 class WebcamPhoto extends Component {
     constructor(props){
