@@ -5,7 +5,7 @@ import Webcam from "react-webcam"
 
 import './WebcamPhoto.css'
 
-const videoConstraints = { aspectRatio: 0.75, frameRate: { max: 60 }, facingMode: { exact: "user" }}
+const videoConstraints = { aspectRatio: 0.75, frameRate: { max: 60 }, facingMode: { exact: 'selfie' } }
 
 class WebcamPhoto extends Component {
     constructor(props){
@@ -49,6 +49,7 @@ class WebcamPhoto extends Component {
             style={videoStyle}
             screenshotFormat='image/jpeg' 
             videoConstraints={videoConstraints}
+            onUserMediaError={ e => console.log(e.name) }
             />
 
             <img src={this.props.dataUri} rel='' style={imgStyle} />
